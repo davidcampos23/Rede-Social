@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace api.Models
+namespace backend.Models
 {
     public class Posts
     {
-        public Guid IdMessage { get; set; }
+        public Guid Id { get; init; }
 
         [Required(ErrorMessage = "imagem vazia!")]
         public string Token { get; set; }
@@ -19,7 +19,7 @@ namespace api.Models
 
         public Posts(string token, string username, string text)
         {
-            IdMessage = Guid.NewGuid();
+            Id = Guid.NewGuid();
             UserName = username;
             Token = token;
             Text = text;
