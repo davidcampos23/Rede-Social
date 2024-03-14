@@ -1,3 +1,3 @@
 namespace backend.Models;
 
-public record AddPostsRequest(string token, string username, string text);
+public record AddPostsRequest(string TokenImage, string UserName, string Menssage);

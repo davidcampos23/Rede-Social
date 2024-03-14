@@ -17,6 +17,10 @@ namespace backend.Models
 
         public DateTime Date { get; set; }
 
+        public Posts()
+        {
+        }
+
         public Posts(string token, string username, string text)
         {
             Id = Guid.NewGuid();

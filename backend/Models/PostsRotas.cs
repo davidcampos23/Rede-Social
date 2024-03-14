@@ -9,13 +9,18 @@ public static class PostsRotas
         //Post
         app.MapPost(pattern: "/posts", handler: async(AddPostsRequest request, AppDbContext context) =>{
             
-            var novoPost = new Posts(request.token, request.username, request.text);
+            var novoPost = new Posts(request.TokenImage, request.UserName, request.Menssage);
 
             await context.posts.AddAsync(novoPost);
             await context.SaveChangesAsync();
         });
 
         //Get
+        app.MapGet(pattern: "/posts/obter", handler: (AppDbContext context)=>{
+            var todosPosts = context.posts;
+            return todosPosts;
+        });
+
         //Delete
     }
 }

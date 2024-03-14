@@ -1,0 +1,13 @@
+<section class="feed">    
+    <ul>
+        @for(post of data; track post.id)
+        {
+            <li>
+                <h2>{{post.token}}</h2>
+                <h2>{{post.userName}}</h2>
+                <h2>{{post.date}}</h2>
+                <h2>{{post.text}}</h2>
+            </li>
+        }
+    </ul>
+</section>
