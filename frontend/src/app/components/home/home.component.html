@@ -1,13 +1,32 @@
-<section class="feed">    
-    <ul>
-        @for(post of data; track post.id)
-        {
-            <li>
-                <h2>{{post.token}}</h2>
-                <h2>{{post.userName}}</h2>
-                <h2>{{post.date}}</h2>
-                <h2>{{post.text}}</h2>
-            </li>
-        }
-    </ul>
-</section>
+<main>
+    <div class="container">
+        <section class="commom">
+            <h2>Home</h2>
+            <h2>Perfil</h2>
+            <h2>Search</h2>
+            <h2>Settings</h2>
+            <h2>New Post</h2>
+        </section>
+        <section class="feed">    
+            <ul>
+                @for(post of data; track post.id)
+                {
+                    <li>
+                        <h2>{{post.token}}</h2>
+                        <h2>{{post.userName}} {{formatDate(post.date)}}</h2>
+                        
+                        <p>{{post.text}}</p>
+                    </li>
+                }
+            </ul>
+        </section>
+        <section class="friendList">
+            <div class="friends">
+                <h2>Home</h2>
+                <h2>Home</h2>
+                <h2>Home</h2>
+                <h2>Home</h2>
+            </div>
+        </section>
+    </div>
+</main>

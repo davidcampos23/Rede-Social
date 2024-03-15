@@ -1,3 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    background-color: rgba( 17, 17, 17, 1.0);
+    color: white;
+}
+
+.container{
+    display: flex;
+}
+
+.container > section{
+    flex: 1;
+    padding: 20px;
+}
+
 .feed{
-    background-color: deepskyblue;
+
+    border-left: 1px solid #3F3C3C;
+    border-right: 1px solid #3F3C3C;
+    height: 100vh;
+
+    ul{
+        
+        list-style: none;
+    }
+
+    li{
+        padding: 6px;
+        margin-bottom: 16px;
+        background-color: #202122;
+
+        p{
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    }
+}
+
+.friendList{
+    
+    .friends{
+        background-color: #202122;
+    }
 }
