@@ -18,10 +18,79 @@ main{
 }
 
 .feed{
-
     border-left: 1px solid #3F3C3C;
     border-right: 1px solid #3F3C3C;
-    height: 100vh;
+    height: 100%;
+
+    .form{
+        background-color: #202122;
+        margin-bottom: 16px;
+        display: grid;
+        grid-template-areas: 
+        "a b b b"
+        "a b b b";
+    
+        grid-template-columns: 80px 1fr;
+        //grid-template-rows: auto;
+
+        .imgPost{
+            grid-area: a;
+            padding-top: 12px;
+
+            img{
+                margin: auto;
+                display: block;
+                border-radius: 100%;
+                background-color: white;
+            }
+        }
+
+        .textM{
+            width: 100%;
+        }
+
+        form{
+            padding: 6px;
+            padding-left: 0;
+            height: auto;
+            width: 100%;
+            grid-area: b;
+
+            display: flex;
+            flex-direction: column;
+            
+
+            textarea{
+                border: none;
+                height: auto;
+        
+                margin: 8px;
+                padding: 8px;
+                border-radius: 8px;
+
+                text-decoration: none;
+                appearance: none;
+                resize: none;
+                overflow: hidden;
+
+                background-color: inherit;
+                border-bottom: 1px solid #3F3C3C;
+                color: white;
+
+                word-break: break-all;
+            }
+
+            textarea:focus{
+            outline: none;
+            }
+
+
+            button{
+                width: 86px;
+                margin: 8px;
+            }
+        }
+    }
 
     ul{
         

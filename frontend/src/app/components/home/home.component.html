@@ -8,6 +8,18 @@
             <h2>New Post</h2>
         </section>
         <section class="feed">    
+            <div class="form">
+                <div class="imgPost">
+                    <img class="imgPef" src="" alt="" width="50px" height="50px">
+                </div>
+                <div class="textM">
+                    <form action="" (submit)="onSubmit()">
+                        <textarea wrap="hard" autocomplete="off" rows="1" placeholder="Oque está acontecendo?" name="menssage" [(ngModel)]="user.menssage"></textarea>
+                        <button type="submit">Post</button>
+                    </form>
+                </div>
+            </div>
+            
             <ul>
                 @for(post of data; track post.id)
                 {
