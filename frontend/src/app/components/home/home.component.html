@@ -1,15 +1,17 @@
 <main>
     <div class="container">
         <section class="commom">
-            <label class="picture" tabindex="0">
-                <input #ImageInput type="file" accept="image/*" (change)="OnFileSelected($event)" class="picture_input" id="picture_input">
-                <span class="picture_image"></span>
-            </label>
-            
-            <h2>Home</h2>
-            <h2>Description</h2>
-            <h2>Search</h2>
-            <h2>Settings</h2>
+            <div class="imgPerfilAlt">
+                <label class="picture" tabindex="0">
+                    <input #ImageInput type="file" accept="image/*" (change)="OnFileSelected($event)" class="picture_input" id="picture_input">
+                    <span class="picture_image">Choose an Image</span>
+                </label>
+            </div>
+            <div>
+                <h2>Description</h2>
+                <h2>Search</h2>
+                <h2>Settings</h2>
+            </div>
         </section>
         <section class="feed">    
             <div class="form">
@@ -28,8 +30,15 @@
                 @for(post of data; track post.id)
                 {
                     <li>
-                        <img [src]="post.token" width="50px" height="50px">
-                        <h2>{{post.userName}} {{formatDate(post.date)}}</h2>
+                        <div class="feedNamePost">
+                            <div class="imgFeedPost">
+                                <img [src]="decodeString(post.token)" width="50px" height="50px" >
+                            </div>
+                            <div class="feedNameDate">
+                                <h4 class="name">{{post.userName}}</h4> 
+                                <h4 class="date">{{formatDate(post.date)}}</h4>
+                            </div>
+                        </div>
                         
                         <p>{{post.text}}</p>
                     </li>

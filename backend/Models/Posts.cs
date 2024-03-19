@@ -19,11 +19,11 @@ namespace backend.Models
 
         public Posts() {}
 
-        public Posts(string token, string username, string text)
+        public Posts(byte[] token, string username, string text)
         {
             Id = Guid.NewGuid();
             UserName = username;
-            Token = System.Convert.FromBase64String(token);
+            Token = token;
             Text = text;
             Date = DateTime.Now;
         }

@@ -8,6 +8,12 @@ main{
     color: white;
 }
 
+.imgPerfilAlt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .picture{
     width: 300px;
     height: 300px;
@@ -49,6 +55,7 @@ main{
     border-left: 1px solid #3F3C3C;
     border-right: 1px solid #3F3C3C;
     height: 100%;
+    font-family: sans-serif;
 
     .form{
         background-color: #202122;
@@ -132,7 +139,44 @@ main{
 
         p{
             margin-top: 10px;
+            font-size: 14px;
+            padding: 4px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+    }
+
+    .feedNamePost{
+        display: flex;
+        padding: 4px;
+        margin-bottom: 6px;
+        align-items: center;
+        padding-top: 6px;
+    }
+
+    .feedNameDate{
+        display: flex;
+        width: 100%;
+        align-items: end;
+        justify-content: space-between;
+        margin-top: 6px;
+
+        .name{
             font-size: 18px;
+        }
+
+        .date{
+            font-size: 14px;
+            margin-right: 14px;
+        }
+    }
+
+    .imgFeedPost{
+        
+        margin-right: 18px;
+
+        img{
+            border-radius: 100%;
         }
     }
 }

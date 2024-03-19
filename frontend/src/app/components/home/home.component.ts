@@ -42,6 +42,9 @@ export class HomeComponent implements OnInit{
     });
   }
 
+  decodeString(base64String:string):string{
+    return 'data:image/jpeg;base64,' + base64String;
+  }
 
   OnFileSelected(event : any){
     const file : File = event.target.files[0];

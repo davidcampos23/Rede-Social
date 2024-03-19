@@ -10,12 +10,12 @@ public class Register{
 
     public Register() {}
 
-    public Register(string username, string email, string password, string image)
+    public Register(string username, string email, string password, byte[] image)
     {
         Id = Guid.NewGuid();
         UserName = username;
         Email = email;
         Password = password;
-        Image = System.Convert.FromBase64String(image);
+        Image = image;
     }
 }
