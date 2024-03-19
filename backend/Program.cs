@@ -35,5 +35,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.AddRotasPosts();
+app.AddRotasRegister();
 
 app.Run();

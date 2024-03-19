@@ -7,7 +7,7 @@ namespace backend.Models
         public Guid Id { get; init; }
 
         [Required(ErrorMessage = "imagem vazia!")]
-        public string Token { get; set; }
+        public byte[] Token { get; set; }
 
         [Required(ErrorMessage = "Nome vazio!")]
         public string UserName { get; set; }
@@ -17,15 +17,13 @@ namespace backend.Models
 
         public DateTime Date { get; set; }
 
-        public Posts()
-        {
-        }
+        public Posts() {}
 
         public Posts(string token, string username, string text)
         {
             Id = Guid.NewGuid();
             UserName = username;
-            Token = token;
+            Token = System.Convert.FromBase64String(token);
             Text = text;
             Date = DateTime.Now;
         }

@@ -1,43 +1,67 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Console, error } from 'node:console';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, NgOptimizedImage,],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
-  data : any [] = [];
   
+  constructor(private httpClient : HttpClient){}
+
+  ngOnInit(): void {
+    this.fetchData();
+    this.data.reverse();
+}
+  
+  data : any [] = [];
+
   user :any = {
-    tokenImage: 'imagen ref',
+    tokenImage: '',
     userName: 'user admin',
     menssage: ''
   }
 
+
   onSubmit(){
-    this.httpClient.post('http://localhost:5041/posts', this.user).subscribe(postar =>{
-    postar = this.user
+    this.httpClient.post('http://localhost:5041/api/feed/post', this.user).subscribe((response : any) =>{
+    response = this.user;
     location.reload();
     });
   }
 
-  constructor(private httpClient : HttpClient){}
-
-  ngOnInit(): void {
-      this.fetchData();
-      this.data.reverse();
-  }
-
   fetchData() {
-    this.httpClient.get('http://localhost:5041/posts/obter').subscribe((data: any) =>{
+    this.httpClient.get('http://localhost:5041/api/feed/get').subscribe((data: any) =>{
     this.data = data;
     });
   }
+
+
+  OnFileSelected(event : any){
+    const file : File = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () =>{
+      let base64String:string = reader.result as string;
+      const commamIndex = base64String.indexOf(',');
+
+      if(commamIndex !== -1)
+      {
+        base64String = base64String.substring(commamIndex+1);
+      }
+
+      this.user.tokenImage = base64String;
+    };
+
+    reader.readAsDataURL(file);
+  }
+
 
   formatDate(dateString : any) {
     const date = new Date(dateString);
@@ -56,4 +80,3 @@ export class HomeComponent implements OnInit{
             return `${formattedDay}/${formattedMonth}/${year} ${formattedHour}:${formattedMinute}`;
 }
 }
-

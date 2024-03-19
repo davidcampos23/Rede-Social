@@ -7,7 +7,7 @@ public static class PostsRotas
     public static void AddRotasPosts(this WebApplication app)
     {
         //Post
-        app.MapPost(pattern: "/posts", handler: async(AddPostsRequest request, AppDbContext context) =>{
+        app.MapPost(pattern: "/api/feed/post", handler: async(AddPostsRequest request, AppDbContext context) =>{
             
             var novoPost = new Posts(request.TokenImage, request.UserName, request.Menssage);
 
@@ -16,7 +16,7 @@ public static class PostsRotas
         });
 
         //Get
-        app.MapGet(pattern: "/posts/obter", handler: (AppDbContext context)=>{
+        app.MapGet(pattern: "/api/feed/get", handler: (AppDbContext context)=>{
             var todosPosts = context.posts;
             return todosPosts;
         });

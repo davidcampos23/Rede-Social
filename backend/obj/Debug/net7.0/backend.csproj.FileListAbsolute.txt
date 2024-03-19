@@ -15,6 +15,7 @@ G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Sqlite.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Microsoft.OpenApi.dll
+G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Mono.TextTemplating.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\SQLitePCLRaw.batteries_v2.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\SQLitePCLRaw.core.dll
@@ -23,6 +24,8 @@ G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\System.CodeDom.dll
+G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\System.Drawing.Common.dll
+G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\alpine-arm\native\libe_sqlite3.so
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\alpine-arm64\native\libe_sqlite3.so
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\alpine-x64\native\libe_sqlite3.so
@@ -46,6 +49,7 @@ G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\win-arm\native\e_sqli
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
+G:\_Projetos\Rede Social\backend\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 G:\_Projetos\Rede Social\backend\obj\Debug\net7.0\backend.csproj.AssemblyReference.cache
 G:\_Projetos\Rede Social\backend\obj\Debug\net7.0\backend.GeneratedMSBuildEditorConfig.editorconfig
 G:\_Projetos\Rede Social\backend\obj\Debug\net7.0\backend.AssemblyInfoInputs.cache

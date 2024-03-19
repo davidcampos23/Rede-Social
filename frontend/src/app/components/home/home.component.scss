@@ -8,6 +8,34 @@ main{
     color: white;
 }
 
+.picture{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentColor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+}
+
+.picture:hover{
+    color: #777;
+    background: #ccc;
+}
+
+.picture:focus{
+    box-shadow: 0 0 10px rgba( 255, 255, 255, .3);
+}
+
+.picture_input{
+    display: none;   
+}
+
 .container{
     display: flex;
 }
