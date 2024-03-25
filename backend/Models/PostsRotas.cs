@@ -4,7 +4,7 @@ namespace backend.Models;
 
 public static class PostsRotas
 {
-    public static void AddRotasPosts(this WebApplication app)
+    /*public static void AddRotasPosts(this WebApplication app)
     {
         //Post
         app.MapPost(pattern: "/api/feed/post", handler: async(AddPostsRequest request, AppDbContext context) =>{
@@ -22,5 +22,5 @@ public static class PostsRotas
         });
 
         //Delete
-    }
+    }*/
 }

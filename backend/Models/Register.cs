@@ -1,11 +1,22 @@
+using System.ComponentModel.DataAnnotations;
+using backend.Security;
+
 namespace backend.Models;
 
 public class Register{
     
     public Guid Id { get; init; }
+
+    [Required(ErrorMessage = "Campo Vazio")]
     public string UserName { get; set; }
+
+    [Required(ErrorMessage = "Campo Vazio")]
+    [EmailAddress(ErrorMessage ="Formato Inadequado")]
     public string Email { get; set; }
+
+    [Required(ErrorMessage = "Campo Vazio")]
     public string Password { get; set; }
+
     public byte[] Image { get; set; }
 
     public Register() {}
@@ -15,7 +26,9 @@ public class Register{
         Id = Guid.NewGuid();
         UserName = username;
         Email = email;
-        Password = password;
         Image = image;
+
+        HashAndSalt hashCrypto = new HashAndSalt();
+        Password = hashCrypto.EncryptPassword(password);
     }
 }
