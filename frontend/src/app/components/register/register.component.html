@@ -1,0 +1,10 @@
+<section class="register">
+    <form action="" (submit)="onSubmit()">
+        <label>Create User</label>
+        <input type="text" placeholder="User Name" name="userName" [(ngModel)]="user.userName">
+        <input type="email" placeholder="Email" name="email" [(ngModel)]="user.email">
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="userPasswordConfirm.passwordInitial">
+        <input type="password" placeholder="Password Cofirm" name="passwordConfirm" [(ngModel)]="userPasswordConfirm.passwordConfirm">
+        <button type="submit">Create</button>
+    </form>
+</section>

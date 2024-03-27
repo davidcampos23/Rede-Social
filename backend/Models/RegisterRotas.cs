@@ -1,5 +1,6 @@
 using backend.Data;
-using System.Drawing;   
+using System.Drawing;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models;
 
@@ -8,13 +9,20 @@ public static class RegisterRotas{
     {
         app.MapPost(pattern: "/api/register/user/create", handler:async(AddRegisterRequest request, AppDbContext context)=>{
            
+            var existingUser = await context.registers.FirstOrDefaultAsync(x => x.Email == request.Email); 
+            
+            if (existingUser != null)
+            {
+                return Results.BadRequest("O Email já está em uso.");
+            }
+
             var newRegister = new Register(request.UserName, request.Email, request.Password, request.Image);
             
             await context.registers.AddAsync(newRegister);
             await context.SaveChangesAsync();
-        });
 
-        app.MapGet(pattern: "/api/register/user/login", handler:()=>{});
+            return Results.Ok("Conta Criada.");
+        });
         
     }
 }

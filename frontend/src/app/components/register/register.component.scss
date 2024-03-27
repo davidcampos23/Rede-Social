@@ -1,0 +1,59 @@
+.register{
+    margin-top: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    margin: 16px;
+    width: max-content;
+    height: 500px;
+    padding: 12px;
+    background-color: #202122;
+
+    display: grid;
+    grid-template-rows: 5;
+    gap: 12px;
+    border-radius: 8px;
+
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+
+    box-shadow: 0 0 3px #3F3C3C;
+}
+
+label{
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+}
+
+input{
+    width: 500px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+input:invalid{
+    outline: 2px solid rgb(180, 44, 44);
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+input, button{
+    text-decoration: none;
+    appearance: none;
+    resize: none;
+    overflow: hidden;
+    border: none;
+}
