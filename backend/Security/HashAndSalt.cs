@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
 using System.Text;
@@ -6,7 +7,7 @@ namespace backend.Security;
 
 public class HashAndSalt
 {
-    private SHA256 _algoritimoHash;
+    private readonly SHA256 _algoritimoHash;
 
     public HashAndSalt()
     {
@@ -17,23 +18,27 @@ public class HashAndSalt
     {
         byte[] salt;
 
-        using(var rng = RandomNumberGenerator.Create())
+        using (var rng = RandomNumberGenerator.Create())
         {
-            rng.GetBytes(salt = new byte[16]);
+            salt = new byte[16];
+            rng.GetBytes(salt);
         }
 
-        byte[] passwordWithSalt = new byte[password.Length + salt.Length];
-        Array.Copy(Encoding.UTF8.GetBytes(password), passwordWithSalt, password.Length);
-        Array.Copy(salt, 0, passwordWithSalt, password.Length, salt.Length);
+        var hashWithSalt = $"{password}:{Convert.ToBase64String(salt)}";
 
-        byte[] encryptedPassword = _algoritimoHash.ComputeHash(passwordWithSalt);
+        var passwordBytes = Encoding.Default.GetBytes(hashWithSalt);
+        var hashedPassword = _algoritimoHash.ComputeHash(passwordBytes);
 
-        var sb = new StringBuilder();
-        foreach(var caracter in encryptedPassword)
-        {
-            sb.Append(caracter.ToString("x2"));
-        }
-
-        return $"{sb.ToString()}:{Convert.ToBase64String(salt)}";
+        return $"{Convert.ToHexString(hashedPassword)}:{Convert.ToBase64String(salt)}";
     }
+
+    public bool passwordVerify(string passwordLogin, string passwordRegister)
+    {
+        string[] hashParts = passwordRegister.Split(":");
+        
+        byte[] loginWithSalt = Encoding.Default.GetBytes(passwordLogin+ ":" + hashParts[1]);
+        byte[] loginComputed = _algoritimoHash.ComputeHash(loginWithSalt);
+
+        return StructuralComparisons.StructuralEqualityComparer.Equals(Convert.ToHexString(loginComputed), hashParts[0]);   
+    }   
 }
