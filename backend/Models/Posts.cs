@@ -11,15 +11,16 @@ namespace backend.Models
 
         public DateTime Date { get; set; }
 
-        //public Guid User { get; set; }
+        public Guid User { get; set; }
 
         public Posts() {}
 
-        public Posts(string text)
+        public Posts(string text, Guid userId)
         {
             Id = Guid.NewGuid();
             Text = text;
             Date = DateTime.Now;
+            User = userId;
         }
     }
 }

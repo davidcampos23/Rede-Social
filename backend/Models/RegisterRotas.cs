@@ -22,7 +22,7 @@ public static class RegisterRotas{
             await context.registers.AddAsync(newRegister);
             await context.SaveChangesAsync();
 
-            return Results.Ok("Conta Criada.");
+            return Results.Ok(true);
         });
 
         app.MapPost(pattern:"/api/register/user/login", handler:async(AddLoginRequest request, AppDbContext context)=>{
@@ -39,7 +39,7 @@ public static class RegisterRotas{
             HashAndSalt hashCrypto = new HashAndSalt();
             var loginEffect = hashCrypto.passwordVerify(request.Password, searchUser.Password);
 
-            return Results.Ok("Login: " + loginEffect);
+            return Results.Ok("Login: " + loginEffect + searchUser.Id);
         });
 
     }

@@ -2,6 +2,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterComponent{
   
-  constructor(private httpClient : HttpClient){ }
+  constructor(private httpClient : HttpClient, private router : Router){ }
   
   user: any = {
     userName : '',
@@ -58,7 +59,9 @@ export class RegisterComponent{
   createUserCommand()
   {
     this.httpClient.post('http://localhost:5041/api/register/user/create',this.user).subscribe((response : any) =>{
-      console.log(response);
+      if(response){
+        this.router.navigate(['/home']);
+      }
     });
   }
 
