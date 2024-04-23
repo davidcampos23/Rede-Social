@@ -6,7 +6,7 @@ namespace backend.Data;
 
 public class AppDbContext : DbContext
 {
-    //public DbSet<Posts> posts { get; set;}
+    public DbSet<Posts> posts { get; set;}
     public DbSet<Register> registers {get; set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

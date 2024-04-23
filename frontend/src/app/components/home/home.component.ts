@@ -1,8 +1,8 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Console, error } from 'node:console';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,39 +13,45 @@ import { Console, error } from 'node:console';
 })
 export class HomeComponent implements OnInit{
   
-  constructor(private httpClient : HttpClient){}
+  constructor(private httpClient : HttpClient, private route : ActivatedRoute){}
 
   ngOnInit(): void {
-    this.fetchData();
+    this.userIdLogin = this.route.snapshot.paramMap.get('userId');
+    this.loadingPosts();
     this.data.reverse();
-}
+
+    this.user.userId = this.userIdLogin;
+  }
   
   data : any [] = [];
+  userIdLogin : any = '';
 
   user :any = {
-    tokenImage: '',
-    userName: 'user admin',
+    userId: '',
     menssage: ''
   }
 
 
-  onSubmit(){
+  createPost(){
+    console.log(this.user);
     this.httpClient.post('http://localhost:5041/api/feed/post', this.user).subscribe((response : any) =>{
     response = this.user;
     location.reload();
     });
   }
 
-  fetchData() {
+  loadingPosts() {
     this.httpClient.get('http://localhost:5041/api/feed/get').subscribe((data: any) =>{
     this.data = data;
     });
   }
 
+  //Load Image
   decodeString(base64String:string):string{
     return 'data:image/jpeg;base64,' + base64String;
   }
 
+  //Change Image
   OnFileSelected(event : any){
     const file : File = event.target.files[0];
     const reader = new FileReader();
