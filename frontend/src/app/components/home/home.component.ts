@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit{
       }
 
       this.user.tokenImage = base64String;
+      console.log(base64String)
     };
 
     reader.readAsDataURL(file);

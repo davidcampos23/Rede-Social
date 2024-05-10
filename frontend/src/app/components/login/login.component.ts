@@ -15,9 +15,6 @@ export class LoginComponent {
 
   constructor(private httpClient : HttpClient, private router : Router){}
 
-  userId : any;
-  idSplit = []
-
   userLogin : any = {
     email: '',
     password: ''
@@ -25,17 +22,15 @@ export class LoginComponent {
 
   loginSubmit(){
     this.httpClient.post('http://localhost:5041/api/register/user/login', this.userLogin).subscribe((response : any)=>{
-      if(response){
-        this.idSplit = response.split(':');
-        this.userId = this.idSplit[2];
-        
-        this.redirectHome();
+      const {loginEffect, userId} = response;
+      if(loginEffect){        
+        this.redirectHome(userId);
       }
 
     });
   }
 
-  redirectHome(){
-    this.router.navigate(['/home', {userId : this.userId}]);
+  redirectHome(userId : any){
+    this.router.navigate(['/home', {userId : userId}]);
   }
 }

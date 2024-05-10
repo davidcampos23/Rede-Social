@@ -39,7 +39,12 @@ public static class RegisterRotas{
             HashAndSalt hashCrypto = new HashAndSalt();
             var loginEffect = hashCrypto.passwordVerify(request.Password, searchUser.Password);
 
-            return Results.Ok($"Login: {loginEffect} UserId: {searchUser.Id} ");
+            var result = new {
+                LoginEffect = loginEffect,
+                UserId = searchUser.Id
+            };
+
+            return Results.Ok(result);
         });
 
     }
