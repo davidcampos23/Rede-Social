@@ -16,11 +16,11 @@
         <section class="feed">    
             <div class="form">
                 <div class="imgPost">
-                    <img class="imgPef" src="" alt="" width="50px" height="50px">
+                    <img class="imgPef" [src]="decodeString(imgPerfil)" alt="imagem perfil post" width="50px" height="50px">
                 </div>
                 <div class="textM">
                     <form action="" (submit)="createPost()">
-                        <textarea wrap="hard" autocomplete="off" rows="1" placeholder="Oque está acontecendo?" name="menssage" [(ngModel)]="user.menssage"></textarea>
+                        <textarea wrap="hard" autocomplete="off" rows="1" placeholder="Oque está acontecendo?" name="menssage" [(ngModel)]="userPostCreate.menssage"></textarea>
                         <button type="submit">Post</button>
                     </form>
                 </div>
@@ -32,7 +32,7 @@
                     <li>
                         <div class="feedNamePost">
                             <div class="imgFeedPost">
-                                <img [src]="decodeString(post.token)" width="50px" height="50px" >
+                                <img [src]="decodeString(post.image)" width="50px" height="50px">
                             </div>
                             <div class="feedNameDate">
                                 <h4 class="name">{{post.userName}}</h4> 

@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-home',
@@ -19,36 +20,60 @@ export class HomeComponent implements OnInit{
     this.userIdLogin = this.route.snapshot.paramMap.get('userId');
     this.loadingPosts();
     this.data.reverse();
-
-    this.user.userId = this.userIdLogin;
+  
+    this.userPostCreate.userId = this.userIdLogin;
+    this.loadImageUser();
   }
   
-  data : any [] = [];
+  data : any [] = []
   userIdLogin : any = '';
 
-  user :any = {
+  imgPerfil = ''
+  dataImageChanged = ''
+
+  userPostCreate :any = {
     userId: '',
     menssage: ''
   }
 
+  loadImageUser(){
+    const userIdGet = this.userPostCreate.userId;
+
+    this.httpClient.get('http://localhost:5041/api/register/user/get/image?userIdGet='+userIdGet).subscribe((response: any)=>{
+      this.imgPerfil = response;
+    });
+
+  }
 
   createPost(){
-    console.log(this.user);
-    this.httpClient.post('http://localhost:5041/api/feed/post', this.user).subscribe((response : any) =>{
-    response = this.user;
+    //console.log(this.user);
+    this.httpClient.post('http://localhost:5041/api/feed/post', this.userPostCreate).subscribe((response : any) =>{
     location.reload();
     });
   }
 
   loadingPosts() {
-    this.httpClient.get('http://localhost:5041/api/feed/get').subscribe((data: any) =>{
-    this.data = data;
+    this.httpClient.get('http://localhost:5041/api/feed/get').subscribe((data: any) =>{    
+    this.data = data
     });
+  }
+
+  changedImageUser(){
+    let payload = {
+    idUser: this.userPostCreate.userId,
+    imageUser: this.dataImageChanged
+    };
+
+    this.httpClient.put('http://localhost:5041/api/register/user/put/image', payload, {headers:{'Content-Type':'application/json'}}).subscribe((response : any) =>{
+      console.log(response); 
+    });
+
+    location.reload();
   }
 
   //Load Image
   decodeString(base64String:string):string{
-    return 'data:image/jpeg;base64,' + base64String;
+    return 'data:image/jpeg;base64,'+base64String;
   }
 
   //Change Image
@@ -65,8 +90,8 @@ export class HomeComponent implements OnInit{
         base64String = base64String.substring(commamIndex+1);
       }
 
-      this.user.tokenImage = base64String;
-      console.log(base64String)
+      this.dataImageChanged = base64String;
+      this.changedImageUser();
     };
 
     reader.readAsDataURL(file);
