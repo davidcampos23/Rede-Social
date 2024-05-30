@@ -1,9 +1,22 @@
+<section class="background">
+
+</section>
 <section class="register">
-    <form action="" (submit)="loginSubmit()">
-        <label>Enter User</label>
-        <input type="email" placeholder="Email" name="email" [(ngModel)]="userLogin.email">
-        <input type="password" placeholder="Password" name="password" [(ngModel)]="userLogin.password">
-        <button type="submit">Login</button>
-        <a href="/register">Criar uma nova Conta.</a>
-    </form>
+    <div class="Login">
+        <div class="logo">
+            <h1>Bem Vindo!</h1>
+            <p>Utile suas credenciais para acessar nosso site. Caso não seja cadastrado, aproveite para se Registrar!</p>
+            <a href="/register">Criar uma nova Conta.</a>
+        </div>
+        <div class="enterUser">
+            <h1>Enter User</h1>
+            <p>Se você possui uma conta, log usando seu email.</p>
+
+            <form action="" (submit)="loginSubmit()">
+                <input type="email" placeholder="Email" name="email" [(ngModel)]="userLogin.email">
+                <input type="password" placeholder="Password" name="password" [(ngModel)]="userLogin.password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
 </section>
