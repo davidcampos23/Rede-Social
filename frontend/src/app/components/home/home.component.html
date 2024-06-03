@@ -1,16 +1,21 @@
+<section class="background"></section>
 <main>
     <div class="container">
         <section class="commom">
-            <div class="imgPerfilAlt">
-                <label class="picture" tabindex="0">
-                    <input #ImageInput type="file" accept="image/*" (change)="OnFileSelected($event)" class="picture_input" id="picture_input">
-                    <span class="picture_image">Choose an Image</span>
-                </label>
-            </div>
-            <div>
-                <h2>Description</h2>
-                <h2>Search</h2>
-                <h2>Settings</h2>
+            <div class="conteinerFixedImg">
+                <div class="imgPerfilContainer">
+                    <img class="imgPerfilPrimary" [src]="decodeString(imgPerfil)" alt="">
+                </div>
+                <div class="settings">
+                    <h2>Description</h2>
+                    <div class="imgPerfilAlt">
+                        <label class="picture" tabindex="0">
+                            <input #ImageInput type="file" accept="image/*" (change)="OnFileSelected($event)" class="picture_input" id="picture_input">
+                            <h2>Mudar Imagem</h2>
+                        </label>
+                    </div>
+                    <h2>Settings</h2>
+                </div>
             </div>
         </section>
         <section class="feed">    
@@ -46,11 +51,13 @@
             </ul>
         </section>
         <section class="friendList">
-            <div class="friends">
-                <h2>Home</h2>
-                <h2>Home</h2>
-                <h2>Home</h2>
-                <h2>Home</h2>
+            <div class="friendListcontainer">
+                <div class="friends">
+                    <h2>Home</h2>
+                    <h2>Home</h2>
+                    <h2>Home</h2>
+                    <h2>Home</h2>
+                </div>
             </div>
         </section>
     </div>

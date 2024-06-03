@@ -1,11 +1,56 @@
 *{
     margin: 0;
     padding: 0;
+    color: whitesmoke;
 }
 
-main{
-    background-color: rgba( 17, 17, 17, 1.0);
-    color: white;
+.background{
+    display: block;
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    background: linear-gradient(0deg, rgba(24,24,24,0.8), #403F7E);
+    background-size: cover;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+}
+
+.commom{
+    height: auto;
+    border-right: 1px solid #9494AA;    
+}
+
+.conteinerFixedImg{
+    position: fixed;
+    left: 8%;
+}
+
+.imgPerfilContainer{
+    padding-top: 42px;
+    text-align: center;
+}
+
+.imgPerfilPrimary{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    border: solid 2px #9494AA;
+    box-shadow: 0 0 5px #9494AA;
+}
+
+.settings{
+    text-align: center;
+    margin-top: 96px;
+
+    h2{
+        font-size: 40px;
+        margin-top: 30px;
+    }
 }
 
 .imgPerfilAlt{
@@ -15,27 +60,8 @@ main{
 }
 
 .picture{
-    width: 300px;
-    height: 300px;
-    border-radius: 100%;
-    background: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    border: 2px dashed currentColor;
+    height: 100%;
     cursor: pointer;
-    font-family: sans-serif;
-    transition: color 300ms ease-in-out, background 300ms ease-in-out;
-}
-
-.picture:hover{
-    color: #777;
-    background: #ccc;
-}
-
-.picture:focus{
-    box-shadow: 0 0 10px rgba( 255, 255, 255, .3);
 }
 
 .picture_input{
@@ -48,18 +74,16 @@ main{
 
 .container > section{
     flex: 1;
-    padding: 20px;
 }
 
 .feed{
-    border-left: 1px solid #3F3C3C;
-    border-right: 1px solid #3F3C3C;
     height: 100%;
+    padding: 18px 8px 0px 8px;
     font-family: sans-serif;
 
     .form{
-        background-color: #202122;
-        margin-bottom: 16px;
+        background-color: #494978;
+        margin-bottom: 30px;
         display: grid;
         grid-template-areas: 
         "a b b b"
@@ -109,7 +133,7 @@ main{
                 overflow: hidden;
 
                 background-color: inherit;
-                border-bottom: 1px solid #3F3C3C;
+                border-bottom: 1px solid #9494AA;
                 color: white;
 
                 word-break: break-all;
@@ -123,19 +147,19 @@ main{
             button{
                 width: 86px;
                 margin: 8px;
+                color: #000000;
             }
         }
     }
 
     ul{
-        
         list-style: none;
     }
 
     li{
         padding: 6px;
         margin-bottom: 16px;
-        background-color: #202122;
+        background-color: #494978;
 
         p{
             margin-top: 10px;
@@ -182,8 +206,18 @@ main{
 }
 
 .friendList{
-    
+    border-left: 1px solid #9494AA;
+    height: auto;
+
+    .friendListcontainer{
+        position: fixed;
+    }
+
     .friends{
-        background-color: #202122;
+        background-color: #494978;
+        margin: 18px 8px 0px 8px;
+        height: 96vh;
+        width: 600px;
+        padding: 6px;
     }
 }

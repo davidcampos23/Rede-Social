@@ -1,5 +1,19 @@
+.background{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    background: linear-gradient(0deg, rgba(24,24,24,0.8), #403F7E);
+    background-size: cover;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+}
+
 .register{
-    margin-top: 70px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -8,10 +22,9 @@
 
 form{
     margin: 16px;
-    width: max-content;
+    margin-top: 150px;
     height: 500px;
     padding: 12px;
-    background-color: #202122;
 
     display: grid;
     grid-template-rows: 5;
@@ -22,12 +35,13 @@ form{
     align-items: center;
     justify-items: center;
 
-    box-shadow: 0 0 3px #3F3C3C;
+    background: linear-gradient(225deg, rgba(24,24,24,0.8), #403F7E);
+    box-shadow: 0 0 2px rgba(24,24,24,0.6);
 }
 
 label{
     font-size: 24px;
-    color: white;
+    color: whitesmoke;
     font-weight: 600;
 }
 
@@ -56,4 +70,6 @@ input, button{
     resize: none;
     overflow: hidden;
     border: none;
+
+    background: rgba(255,255,255,0.8);
 }
