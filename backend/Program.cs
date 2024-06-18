@@ -36,5 +36,6 @@ app.UseHttpsRedirection();
 
 app.AddRotasPosts();
 app.AddRotasRegister();
+app.AddRotasUsers();
 
 app.Run();

@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -23,9 +23,11 @@ export class HomeComponent implements OnInit{
   
     this.userPostCreate.userId = this.userIdLogin;
     this.loadImageUser();
+    this.loadingUserInfo();
   }
   
   data : any [] = []
+  userInfoFrind : any [] = []
   userIdLogin : any = '';
 
   imgPerfil = ''
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit{
   loadImageUser(){
     const userIdGet = this.userPostCreate.userId;
 
-    this.httpClient.get('http://localhost:5041/api/register/user/get/image?userIdGet='+userIdGet).subscribe((response: any)=>{
+    this.httpClient.get('http://localhost:5041/api/users/get/image?userIdGet='+userIdGet).subscribe((response: any)=>{
       this.imgPerfil = response;
     });
 
@@ -58,14 +60,20 @@ export class HomeComponent implements OnInit{
     });
   }
 
+  loadingUserInfo()
+  {
+    this.httpClient.get('http://localhost:5041/api/users/get/info').subscribe((r : any) => {
+      this.userInfoFrind = r;
+    });
+  }
+
   changedImageUser(){
     let payload = {
     idUser: this.userPostCreate.userId,
     imageUser: this.dataImageChanged
     };
 
-    this.httpClient.put('http://localhost:5041/api/register/user/put/image', payload, {headers:{'Content-Type':'application/json'}}).subscribe((response : any) =>{
-      console.log(response); 
+    this.httpClient.put('http://localhost:5041/api/users/put/image', payload, {headers:{'Content-Type':'application/json'}}).subscribe((response : any) =>{ 
     });
 
     location.reload();

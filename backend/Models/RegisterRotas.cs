@@ -47,32 +47,5 @@ public static class RegisterRotas{
             return Results.Ok(result);
         });
 
-        app.MapPut(pattern:"/api/register/user/put/image", handler:async(AddImageRequestPut request, AppDbContext context)=>{
-            if(request.idUser == null || request.imageUser == null){
-                return Results.BadRequest("Um ou mais valores null");
-            }
-
-            var searchUser = await context.registers.FirstOrDefaultAsync(x => x.Id == request.idUser);
-
-            if(searchUser == null){
-                return Results.BadRequest("Usuario não Encontrado.");
-            }
-
-            searchUser.Image = request.imageUser;
-            await context.SaveChangesAsync();
-
-            return Results.Ok("Imagem Salva");
-        });
-
-        app.MapGet(pattern:"/api/register/user/get/image", handler:async(AppDbContext context, Guid userIdGet)=>{
-            var searchUser = await context.registers.FirstOrDefaultAsync(x => x.Id == userIdGet);
-
-            if (searchUser != null) {
-                return Results.Ok(searchUser.Image);
-            } else {
-                return Results.NotFound();
-            }
-        });
-
     }
 }

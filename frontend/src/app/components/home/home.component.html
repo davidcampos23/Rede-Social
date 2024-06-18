@@ -7,14 +7,16 @@
                     <img class="imgPerfilPrimary" [src]="decodeString(imgPerfil)" alt="">
                 </div>
                 <div class="settings">
-                    <h2>Description</h2>
+                    <textarea placeholder="Writer your description!" cols="50" rows="7"></textarea>
                     <div class="imgPerfilAlt">
                         <label class="picture" tabindex="0">
                             <input #ImageInput type="file" accept="image/*" (change)="OnFileSelected($event)" class="picture_input" id="picture_input">
-                            <h2>Mudar Imagem</h2>
+                            <h2>Changed Image</h2>
                         </label>
                     </div>
+                    <h2>Posts Lib</h2>
                     <h2>Settings</h2>
+                    <h2 class="logout">Logout</h2>
                 </div>
             </div>
         </section>
@@ -53,10 +55,18 @@
         <section class="friendList">
             <div class="friendListcontainer">
                 <div class="friends">
-                    <h2>Home</h2>
-                    <h2>Home</h2>
-                    <h2>Home</h2>
-                    <h2>Home</h2>
+                  <ul>
+                    @for(user of userInfoFrind; track user.userName)
+                    {
+                        <li>
+                            <div class="userInfoFriend">
+                                <img class="userImageFriend" [src]="decodeString(user.image)" width="70px" height="70px">
+                                <h3 class="userNameFriend">{{user.userName}}</h3>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum.</p>
+                        </li>
+                    }
+                  </ul>
                 </div>
             </div>
         </section>

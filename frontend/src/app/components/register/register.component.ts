@@ -60,7 +60,7 @@ export class RegisterComponent{
   {
     this.httpClient.post('http://localhost:5041/api/register/user/create',this.user).subscribe((response : any) =>{
       if(response){
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
       }
     });
   }
