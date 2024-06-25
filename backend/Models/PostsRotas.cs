@@ -33,7 +33,5 @@ public static class PostsRotas
             
             return Results.Ok(postsWithUserInfo);
         });
-
-        //Delete
     }
 }
